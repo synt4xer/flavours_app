@@ -1,0 +1,19 @@
+import 'dart:async';
+import 'package:bloc/bloc.dart';
+import './bloc.dart';
+
+class MainBloc extends Bloc<MainEvent, MainState> {
+  @override
+  MainState get initialState => InitialMainState();
+
+  @override
+  Stream<MainState> mapEventToState(
+    MainEvent event,
+  ) async* {
+    // TODO: Add Logic
+    if (event is AuthenticationCheckEvent) {
+      await Future.delayed(Duration(seconds: 2));
+      yield UnAuthenticateState();
+    }
+  }
+}
